@@ -18,7 +18,7 @@ public class LuckyNumbers {
             int secondPartVariants = 0;
 
             if (combinations[firstPartSum][0] != 0) {
-                System.out.println("   already know for : " + firstPartSum + "; combinations: " + combinations[firstPartSum][0]);
+                System.out.println("   already know for: " + firstPartSum + "; combinations: " + combinations[firstPartSum][0]);
                 System.out.println("   total was : " + combinations[firstPartSum][1] + "; and will be: " + (combinations[firstPartSum][1] + secondPartVariants));
                 secondPartVariants = combinations[firstPartSum][0];
                 combinations[firstPartSum][1] += secondPartVariants;
