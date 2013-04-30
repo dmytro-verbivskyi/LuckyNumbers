@@ -9,20 +9,39 @@ public class LuckyNumbers {
         int halfOfDigits = allDigits / 2;
         int combinations[][] = new int[halfOfDigits * 9][2];
 
-        int MAX = 999; //getMaxForAmount(halfOfDigits);
-        for (int i = 0; i < MAX; i++) {
+        int MAX = 99; //getMaxForAmount(halfOfDigits);
+        for (int i = 1; i < MAX; i++) {
             int firstPartSum = sumOfDigits(i);
 
-            int a = 9;
+            System.out.println("i: " + i + "; sum: " + firstPartSum);
+
+            int secondPartVariants = 0;
+
+            if (combinations[firstPartSum][0] != 0) {
+                System.out.println("   already know for : " + firstPartSum + "; combinations: " + combinations[firstPartSum][0]);
+                System.out.println("   total was : " + combinations[firstPartSum][1] + "; and will be: " + (combinations[firstPartSum][1] + secondPartVariants));
+                secondPartVariants = combinations[firstPartSum][0];
+                combinations[firstPartSum][1] += secondPartVariants;
+            } else {
+                System.out.println("   first calc for : " + firstPartSum );
+                for (int j = 1; (firstPartSum * j) <= MAX; j++) {
+                    secondPartVariants++;
+                    System.out.println("   j: " + j + "; firstPartSum * j: " + (firstPartSum * j) + "; secondPartVariants: " + secondPartVariants);
+                }
+                combinations[firstPartSum][0] = secondPartVariants;
+                combinations[firstPartSum][1] = secondPartVariants;
+            }
+            int a = 0;
+
         }
 
-        System.out.println("Hello World!");
+
     }
 
     static int sumOfDigits(int number) {
         int sum = 0;
 
-        for ( ; number != 0; ) {
+        for (; number != 0; ) {
             sum += number % 10;
             number = number / 10;
         }
